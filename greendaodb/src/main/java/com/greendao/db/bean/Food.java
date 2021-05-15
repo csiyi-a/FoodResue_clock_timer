@@ -18,6 +18,7 @@ public class Food implements Serializable {
 
     @Id(autoincrement = true)
     private Long id;
+    private int type;// 0 全部；1 我的
 
 
     private String title;
@@ -31,10 +32,11 @@ public class Food implements Serializable {
     private String location;
 
 
-    @Generated(hash = 708554342)
-    public Food(Long id, String title, String imgUrl, String desc,
+    @Generated(hash = 661270706)
+    public Food(Long id, int type, String title, String imgUrl, String desc,
             String createDate, String quantity, String location) {
         this.id = id;
+        this.type = type;
         this.title = title;
         this.imgUrl = imgUrl;
         this.desc = desc;
@@ -47,6 +49,13 @@ public class Food implements Serializable {
     public Food() {
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public Long getId() {
         return id;
