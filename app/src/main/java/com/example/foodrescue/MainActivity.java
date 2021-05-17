@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
                 item.setType(1);
                 FoodHelper.update(item);
+                Toast.makeText(MainActivity.this, "Share success", Toast.LENGTH_SHORT).show();
+
             }
         }));
 
