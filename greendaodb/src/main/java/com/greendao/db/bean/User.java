@@ -14,32 +14,42 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 @Entity
 public class User {
+
     @Id(autoincrement = true)
     private Long id;
     @Property
     private String name;
     @Unique
+    private String email;
+    @Unique
     private String phone;
-
-
     @Property
     private String address;
-
-
     @Property
-    private int password;
+    private String password;
 
-    @Generated(hash = 1229367253)
-    public User(Long id, String name, String phone, String address, int password) {
-        this.id = id;
-        this.name = name;
-        this.phone = phone;
-        this.address = address;
-        this.password = password;
+    public String getEmail() {
+        return email;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 
     @Generated(hash = 586692638)
     public User() {
+    }
+
+    @Generated(hash = 353038568)
+    public User(Long id, String name, String email, String phone, String address,
+            String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.password = password;
     }
 
     public Long getId() {
@@ -74,11 +84,11 @@ public class User {
         this.address = address;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 }

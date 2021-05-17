@@ -25,12 +25,13 @@ public class FoodDao extends AbstractDao<Food, Long> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Title = new Property(1, String.class, "title", false, "TITLE");
-        public final static Property ImgUrl = new Property(2, String.class, "imgUrl", false, "IMG_URL");
-        public final static Property Desc = new Property(3, String.class, "desc", false, "DESC");
-        public final static Property CreateDate = new Property(4, String.class, "createDate", false, "CREATE_DATE");
-        public final static Property Quantity = new Property(5, String.class, "quantity", false, "QUANTITY");
-        public final static Property Location = new Property(6, String.class, "location", false, "LOCATION");
+        public final static Property Type = new Property(1, int.class, "type", false, "TYPE");
+        public final static Property Title = new Property(2, String.class, "title", false, "TITLE");
+        public final static Property ImgUrl = new Property(3, String.class, "imgUrl", false, "IMG_URL");
+        public final static Property Desc = new Property(4, String.class, "desc", false, "DESC");
+        public final static Property CreateDate = new Property(5, String.class, "createDate", false, "CREATE_DATE");
+        public final static Property Quantity = new Property(6, String.class, "quantity", false, "QUANTITY");
+        public final static Property Location = new Property(7, String.class, "location", false, "LOCATION");
     }
 
 
@@ -47,12 +48,13 @@ public class FoodDao extends AbstractDao<Food, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"FOOD\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "\"TITLE\" TEXT," + // 1: title
-                "\"IMG_URL\" TEXT," + // 2: imgUrl
-                "\"DESC\" TEXT," + // 3: desc
-                "\"CREATE_DATE\" TEXT," + // 4: createDate
-                "\"QUANTITY\" TEXT," + // 5: quantity
-                "\"LOCATION\" TEXT);"); // 6: location
+                "\"TYPE\" INTEGER NOT NULL ," + // 1: type
+                "\"TITLE\" TEXT," + // 2: title
+                "\"IMG_URL\" TEXT," + // 3: imgUrl
+                "\"DESC\" TEXT," + // 4: desc
+                "\"CREATE_DATE\" TEXT," + // 5: createDate
+                "\"QUANTITY\" TEXT," + // 6: quantity
+                "\"LOCATION\" TEXT);"); // 7: location
     }
 
     /** Drops the underlying database table. */
@@ -69,35 +71,36 @@ public class FoodDao extends AbstractDao<Food, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
+        stmt.bindLong(2, entity.getType());
  
         String title = entity.getTitle();
         if (title != null) {
-            stmt.bindString(2, title);
+            stmt.bindString(3, title);
         }
  
         String imgUrl = entity.getImgUrl();
         if (imgUrl != null) {
-            stmt.bindString(3, imgUrl);
+            stmt.bindString(4, imgUrl);
         }
  
         String desc = entity.getDesc();
         if (desc != null) {
-            stmt.bindString(4, desc);
+            stmt.bindString(5, desc);
         }
  
         String createDate = entity.getCreateDate();
         if (createDate != null) {
-            stmt.bindString(5, createDate);
+            stmt.bindString(6, createDate);
         }
  
         String quantity = entity.getQuantity();
         if (quantity != null) {
-            stmt.bindString(6, quantity);
+            stmt.bindString(7, quantity);
         }
  
         String location = entity.getLocation();
         if (location != null) {
-            stmt.bindString(7, location);
+            stmt.bindString(8, location);
         }
     }
 
@@ -109,35 +112,36 @@ public class FoodDao extends AbstractDao<Food, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
+        stmt.bindLong(2, entity.getType());
  
         String title = entity.getTitle();
         if (title != null) {
-            stmt.bindString(2, title);
+            stmt.bindString(3, title);
         }
  
         String imgUrl = entity.getImgUrl();
         if (imgUrl != null) {
-            stmt.bindString(3, imgUrl);
+            stmt.bindString(4, imgUrl);
         }
  
         String desc = entity.getDesc();
         if (desc != null) {
-            stmt.bindString(4, desc);
+            stmt.bindString(5, desc);
         }
  
         String createDate = entity.getCreateDate();
         if (createDate != null) {
-            stmt.bindString(5, createDate);
+            stmt.bindString(6, createDate);
         }
  
         String quantity = entity.getQuantity();
         if (quantity != null) {
-            stmt.bindString(6, quantity);
+            stmt.bindString(7, quantity);
         }
  
         String location = entity.getLocation();
         if (location != null) {
-            stmt.bindString(7, location);
+            stmt.bindString(8, location);
         }
     }
 
@@ -150,12 +154,13 @@ public class FoodDao extends AbstractDao<Food, Long> {
     public Food readEntity(Cursor cursor, int offset) {
         Food entity = new Food( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // title
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // imgUrl
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // desc
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // createDate
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // quantity
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6) // location
+            cursor.getInt(offset + 1), // type
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // title
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // imgUrl
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // desc
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // createDate
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // quantity
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // location
         );
         return entity;
     }
@@ -163,12 +168,13 @@ public class FoodDao extends AbstractDao<Food, Long> {
     @Override
     public void readEntity(Cursor cursor, Food entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setTitle(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setImgUrl(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setDesc(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setCreateDate(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setQuantity(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setLocation(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setType(cursor.getInt(offset + 1));
+        entity.setTitle(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setImgUrl(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setDesc(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setCreateDate(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setQuantity(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setLocation(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
      }
     
     @Override
