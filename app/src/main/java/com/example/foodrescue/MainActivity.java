@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.register(Food.class, new FoodViewBinder(new FoodViewBinder.OnItemClick() {
             @Override
             public void onItem(Food item) {
-
+                DetailActivity.enter(MainActivity.this, item);
             }
 
             @Override
@@ -99,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.myList:
                 mType = 1;
                 initList();
+                break;
+            case R.id.cart:
+                startActivity(new Intent(this, CartActivity.class));
                 break;
         }
         return true;
