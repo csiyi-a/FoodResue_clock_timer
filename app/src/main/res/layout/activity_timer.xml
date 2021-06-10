@@ -16,7 +16,7 @@
         android:layout_marginTop="30dp"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="92sp" />
+        android:textSize="72sp" />
 
 
     <ListView
@@ -34,46 +34,57 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
-        <Button
+        <TextView
             android:id="@+id/start_button"
+            android:gravity="center"
+            android:background="@color/purple_500"
+android:textColor="@color/white"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_gravity="bottom"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="2dp"
             android:layout_weight="1"
             android:onClick="onClickStart"
             android:text="@string/start" />
 
-        <Button
+        <TextView
             android:id="@+id/stop_button"
+            android:gravity="center"
+            android:background="@color/purple_500"
+            android:textColor="@color/white"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_gravity="bottom"
 
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="2dp"
             android:layout_weight="1"
             android:onClick="onClickStop"
             android:text="@string/stop" />
 
-        <Button
+        <TextView
             android:id="@+id/rest_button"
+            android:gravity="center"
+            android:background="@color/purple_500"
+            android:textColor="@color/white"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_gravity="bottom"
 
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="2dp"
             android:layout_weight="1"
             android:onClick="onClickReset"
             android:text="@string/reset" />
 
-        <Button
+        <TextView
             android:id="@+id/tag_button"
+            android:gravity="center"
+            android:background="@color/purple_500"
+            android:textColor="@color/white"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-
+            android:layout_height="30dp"
             android:layout_gravity="bottom"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
