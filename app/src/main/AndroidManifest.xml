@@ -47,6 +47,8 @@
         <activity android:name=".AccountActivity" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".CartActivity" />
+        <activity android:name=".ClockActivity" />
+        <activity android:name=".TimerActivity" />
     </application>
 
 </manifest>

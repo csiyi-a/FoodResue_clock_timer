@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
         mAdapter.setItems(mItems);
 
-
     }
 
     @Override
@@ -102,6 +101,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.cart:
                 startActivity(new Intent(this, CartActivity.class));
+                break;
+            case R.id.clock:
+                startActivity(new Intent(this, ClockActivity.class));
+                break;
+            case R.id.myTimer:
+                startActivity(new Intent(this, TimerActivity.class));
                 break;
         }
         return true;
